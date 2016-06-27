@@ -2,7 +2,7 @@ module Test.Main where
 
 import Prelude
 import Control.Monad.Eff
-import Control.Monad.Eff.Console
+import Control.Monad.Eff.Console (CONSOLE(), logShow)
 import Control.Alt
 import Control.Apply
 import Data.List
@@ -29,7 +29,7 @@ routing =
 
 main :: Eff (console :: CONSOLE) Unit
 main = do
-  print $ matchHash routing "foo/12/?welp='hi'&b=false"
+  logShow $ matchHash routing "foo/12/?welp='hi'&b=false"
   matches routing $ \old new -> void do
-    print old
-    print new
+    logShow old
+    logShow new
